@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<input id="name"></input><br>
+<button onclick="add()">ADD</button>
+<button onclick="deleteall()">Delete All</button>
+<button onclick="showall()">Show All</button><br>
+<p id="output"></p>
+<script type="text/javascript">
+
+function add()
+{
+  console.log("img_glo");
+  const Http = new XMLHttpRequest();
+  const url='http://localhost:8081/add';
+  Http.open("POST", url);
+  Http.setRequestHeader("Content-Type","json")
+  var inp=document.getElementById("name").value;
+  console.log(inp);
+  Http.send(inp);
+
+Http.onreadystatechange = (e) => {
+  var temp=Http.responseText;
+  console.log("PPP");
+  var out=document.getElementById("output"); 
+  out.innerHTML = temp; 
+  // document.body.appendChild(btn);
+
+}
+};
+
+function deleteall()
+{
+  console.log("img_glo");
+  const Http = new XMLHttpRequest();
+  const url='http://localhost:8081/del';
+  Http.open("POST", url);
+  Http.setRequestHeader("Content-Type","json")
+  Http.send();
+
+Http.onreadystatechange = (e) => {
+  var temp=Http.responseText;
+  console.log("PPP");
+  var btn = document.createElement("P");   
+  var out=document.getElementById("output"); 
+  out.innerHTML = temp; 
+
+}
+};
+
+function showall()
+{
+  console.log("img_glo");
+  const Http = new XMLHttpRequest();
+  const url='http://localhost:8081/show';
+  Http.open("POST", url);
+  Http.setRequestHeader("Content-Type","json")
+  Http.send();
+
+Http.onreadystatechange = (e) => {
+  var temp=Http.responseText;
+  console.log("PPP");
+  var out=document.getElementById("output"); 
+  out.innerHTML = temp; 
+
+}
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+version: '3'
+services:
+  mysqldb:
+    container_name: mysqldb
+    networks: 
+      - mynetwork
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment: 
+      - MYSQL_ROOT_HOST=mysqldb
+      - MYSQL_USER=ketan
+      - MYSQL_PASSWORD=ketan
+      - MYSQL_DATABASE=name
+      - MYSQL_ROOT_PASSWORD=ketanp
+    volumes:
+      - database_mysql:/var/lib/mysql
+  frontend:
+    container_name: ui-app
+    image: ui:latest
+    networks: 
+      - mynetwork
+    ports:
+      - 8082:80
+  backend:
+    container_name: go-app
+    networks: 
+      - mynetwork
+    image: server:latest
+    ports:
+      - 8081:8081
+networks: 
+  mynetwork: {}
+volumes:
+  database_mysql: 
