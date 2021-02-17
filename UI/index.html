@@ -16,9 +16,11 @@ function add()
 {
   console.log("img_glo");
   const Http = new XMLHttpRequest();
-  const url='http://localhost:8081/add';
+  
+  const url='go-app:8081/add';
   Http.open("POST", url);
   Http.setRequestHeader("Content-Type","json")
+  Http.setRequestHeader("Access-Control-Allow-Origin","*")
   var inp=document.getElementById("name").value;
   console.log(inp);
   Http.send(inp);
@@ -37,8 +39,10 @@ function deleteall()
 {
   console.log("img_glo");
   const Http = new XMLHttpRequest();
-  const url='http://localhost:8081/del';
+  // Http.setRequestHeader("Access-Control-Allow-Origin","*")
+  const url='go-app:8081/del';
   Http.open("POST", url);
+  Http.setRequestHeader("Access-Control-Allow-Origin","*")
   Http.setRequestHeader("Content-Type","json")
   Http.send();
 
@@ -56,8 +60,10 @@ function showall()
 {
   console.log("img_glo");
   const Http = new XMLHttpRequest();
-  const url='http://localhost:8081/show';
+  // Http.setRequestHeader("Access-Control-Allow-Origin","*")
+  const url='go-app:8081/show';
   Http.open("POST", url);
+  Http.setRequestHeader("Access-Control-Allow-Origin","*")
   Http.setRequestHeader("Content-Type","json")
   Http.send();
 
