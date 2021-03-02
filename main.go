@@ -82,7 +82,7 @@ func handleRequests() {
 
 func main() {
 log.Println("Starting the server...")
-    db,err= sql.Open("mysql","ketan:ketan@tcp(mysqldb:3306)/name")
+ /*   db,err= sql.Open("mysql","ketan:ketan@tcp(mysqldb:3306)/name")
     if err != nil {
         panic(err.Error())
     }
@@ -92,5 +92,6 @@ log.Println("Starting the server...")
        panic(err)
     }
 log.Println("Connection to db established")
+*/
     handleRequests()
 }
